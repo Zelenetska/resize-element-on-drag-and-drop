@@ -1,0 +1,45 @@
+import React from 'react';
+
+import Stripe from './Stripe';
+
+const Table = ({ columnsQty, animals, updateAnimals }) => {
+  const getVerticalLines = () => {
+    const lines = [];
+    for (let i = 0; i < columnsQty; i++) {
+      lines.push(<span key={i} />)
+    }
+    return lines;
+  };
+
+  const getTableBody = () => {
+    const row = [];
+    const cells = [];
+
+    animals.forEach((animal) => {
+      cells.push(
+        <Stripe />,
+      );
+    });
+    row.push(
+      <ul
+        key="row-1"
+        className="row"
+        style={{ gridTemplateColumns: `repeat(${columnsQty}, 1fr)` }}
+      >
+        {cells}
+      </ul>);
+    return row;
+  };
+
+  return (
+    <div className="table-striped">
+      <div
+        className="row lines"
+        style={{ gridTemplateColumns: `repeat(${columnsQty}, 1fr)` }}
+      >{getVerticalLines()}</div>
+      {getTableBody()}
+    </div>
+  )
+};
+
+export default Table;

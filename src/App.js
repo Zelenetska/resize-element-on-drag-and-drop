@@ -1,24 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Table from './grid-table/Table';
 
 function App() {
+  const [animals, setAnimals] = useState([
+    {
+      id: 1,
+      name: "Rabbits",
+      start: 4,
+      end: 7,
+    },
+    {
+      id: 2,
+      name: "Hamsters",
+      start: 2,
+      end: 5,
+    },
+    {
+      id: 3,
+      name: "Squirrels",
+      start: 1,
+      end: 11,
+    }
+  ]);
+
+  const updateAnimals = (data) => {
+    const updatedArray = [];
+    animals.forEach(animal => {
+      if (data.id === animal.id) {
+        const updatedAnimalData = Object.assign(animal, data);
+        updatedArray.push(updatedAnimalData);
+      } else {
+        updatedArray.push(animal);
+      }
+    });
+    setAnimals(updatedArray);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Table
+        columnsQty={15}
+        animals={animals}
+        updateAnimals={updateAnimals}
+      />
     </div>
   );
 }

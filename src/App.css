@@ -1,33 +1,78 @@
-.App {
-  text-align: center;
+.table-striped {
+   display: grid;
+   position: relative;
+   box-sizing: border-box;
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   height: 200px;
+ }
+
+.table-striped .row {
+  display: grid;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.table-striped .lines {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  z-index: 150;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.table-striped .lines span {
+  border-right: 1px dashed #DADFE4;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.stripe-container {
+  position: relative;
+  z-index: 200;
+  height: 38px;
+}
+
+.stripe {
+  padding: 10px 15px;
+  background-color: #25ba1e;
+  color: #fff;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  bottom: 2px;
+  cursor: col-resize;
+  z-index: 220;
+}
+
+.resize-handle.left {
+  left: 0;
+}
+
+.resize-handle.left:before {
+  left: 4px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.resize-handle.right {
+  right: 3px;
+}
+
+.resize-handle.right:after {
+  right: 3px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.resize-handle:before, .resize-handle:after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  width: 4px;
+  height: 5px;
 }
